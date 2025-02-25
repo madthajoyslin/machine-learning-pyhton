@@ -1,0 +1,88 @@
+Observations in Feature Engineering
+----------------------------------------------
+Feature Engineering is applied on each and every field (columns).
+
+1. Training and Testing Dataset is merged to ensure consistency to both datasets
+2. Observe the Data Structure of Dataset by df.info(), df.describe()
+3. convert the datatype object to int64 
+example : date format
+- split the month, date, year into 3 different columns
+	df['Date'].str.split('/').str[0] ##gets all the dates
+-And it will be appended at last of the DataFrame
+-Now convert the datatype into int64
+-Drop the Date format object feature.
+------------------------------------------------------
+Handling Categorical Features
+
+1. One-Hot Encoding
+
+It converts each category into separate binary (0 or 1) columns.
+Best for nominal categories (categories that have no order, like colors).
+
+Example 1: Using pandas.get_dummies()
+Example 2: Using sklearn.preprocessing.OneHotEncoder
+
+2. Label Encoding
+
+Assigns each category a numerical label (e.g., 0, 1, 2, …).
+Best for ordinal categories (categories that have an order, like education levels).
+
+Example: Using LabelEncoder from sklearn
+Example: Manual Mapping using map()
+
+3. Target Encoding
+
+Based on the relationship between the category and the target variable
+Replaces each category with the mean of the target variable
+
+Example 1: Simple Target Encoding (Using pandas);mean()
+Example: Target Encoding with category_encoders library
+
+
+-----------------------------------------------------------------------------
+Observations in EDA
+----------------------------------------------------------------------------
+- Helps us understand, clean, and visualize.
+
+1. Understanding the Data Structure
+
+print(df.shape)  # Number of rows & columns
+print(df.info())  # Data types & missing values
+print(df.describe())  # Summary statistics for numerical data
+print(df.head())  # Show first 5 rows
+print(df.duplicated().sum())  # Count duplicate rows
+
+2. Checking for missing values
+
+print(df.isnull().sum())  # Count missing values in each column
+
+3.Univariate Analysis (Single Variable)
+
+Check distribution of numeric features (Histogram, Box Plot,Violin Plot)
+Check frequency of categorical values (Bar Chart, Pie Chart)
+
+4.Bivariate Analysis (Two Variables)
+
+Check relationships between two numerical variables (Scatter Plot, Correlation Matrix)
+Check relationships between numerical & categorical variables (Box Plot, Violin Plot)
+
+5.Multivariate Analysis (Multiple Variables)
+
+Heatmap for correlation between numerical features
+Pairplot to see relationships between multiple variables
+
+6.Feature Scaling
+
+Feature scaling is used to normalize numerical features so that they have a consistent range, 
+which improves the performance of machine learning models
+Standardization (Z-score normalization) 
+Min-Max Scaling (Range between 0 and 1)
+
+
+
+
+
+
+
+
+

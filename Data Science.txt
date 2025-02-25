@@ -1,0 +1,10 @@
+Feature Engineering is the process of transforming raw data into meaningful features that
+ improve a machine learning model’s performance. 
+
+encoding
+Machine learning models cannot understand text; they need numbers
+
+User_ID,Product_ID,Gender,Age,Occupation,City_Category,Stay_In_Current_City_Years,Marital_Status,Product_Category_1,Product_Category_2,Product_Category_3
+127595
+153118
+153118

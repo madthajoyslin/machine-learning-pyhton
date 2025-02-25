@@ -1,0 +1,116 @@
+Model Modeling--
+ 
+---Regression Algorithms (Predict Continuous Values)
+ 
+Linear Regression
+Polynomial Regression
+Ridge Regression
+Lasso Regression
+Elastic Net Regression
+Bayesian Regression
+Support Vector Regression (SVR)
+Decision Tree Regression
+Random Forest Regression
+ 
+---Classification Algorithms (Predict Categorical Labels)
+ 
+Logistic Regression
+Naïve Bayes (Gaussian, Multinomial, Bernoulli)
+K-Nearest Neighbors (KNN)
+Support Vector Machines (SVM)
+Decision Trees
+Random Forest Classifier
+ 
+ 
+---Clustering Algorithms
+ 
+K-Means Clustering
+Hierarchical Clustering (Agglomerative, Divisive)
+ 
+ 
+---Dimensionality Reduction Algorithms
+Principal Component Analysis (PCA)
+Linear Discriminant Analysis (LDA)
+-----------------------------------------------------------------------------------------
+ Linear Regression
+-------------------------------------------------------------------------------------------
+Can be used when: 
+The relationship between input (X) and output (Y) is linear.
+The dataset does not have significant outliers.
+Features are independent of each other.
+
+Y=mX+c
+
+Step 1: Import Libraries
+Step 2: Load the Dataset
+Step 3: Visualize the Data with sns.scatterplot
+Step 4: Split the Data
+-training (80%) and testing (20%) from the given dataset.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+random_state=42 ===> for not to change the train test datas, everytime you execute.
+Step 5: Train the Model. with model.fit()
+Step 6: Make Predictions for test data. with model.predict()
+Step 7: Evaluate the Model (Evaluation Metrices)
+Step 8: Visualizing the Regression Line
+
+Hyperparameters :- Settings defined before training
+Parameters :- Values learned during training
+
+Linear Regression Hyperparameters
+-----------------------------------
+-No major hyperparameters (it's a simple model)
+-fit_intercept=True/False
+-If fit_intercept=True, the model calculates b0.
+-If fit_intercept=False, the model assumes b0=0. (forcing the line to pass through the origin).
+
+-------------------------------------------------------------------------------------------------
+Decision Tree
+-----------------------
+A Decision Tree is a machine learning model that splits data into smaller groups
+based on decision rules.
+Hyperparameters control tree depth, splits, and overfitting.
+Tuning them improves accuracy & generalization.
+
+hyperparameters
+1. max_depth (Tree Depth)
+2. min_samples_split (Minimum Samples to Split a Node)
+3. min_samples_leaf (Minimum Samples in a Leaf Node)
+4. max_features (Number of Features for a Split)
+Determines how many features are considered at each split.
+
+None (default) → Uses all features (best accuracy, may overfit).
+sqrt → Uses square root of total features (good for classification).
+log2 → Uses log base 2 of total features (helps generalization)
+
+5. criterion (Splitting Measure)
+6. max_leaf_nodes (Maximum Leaf Nodes)
+
+Hyperparameter		What It Does		When to Use?					Example
+----------------------------------------------------------------------------------------------------
+max_depth			Limits tree depth		Prevents overfitting				max_depth=5
+min_samples_split		Minimum samples to 
+				split a node		Avoids unnecessary splits			min_samples_split=10
+min_samples_leaf		Minimum samples in
+				 a leaf			Prevents small, meaningless splits		min_samples_leaf=4
+max_features		Limits number of  
+				features per split	Helps generalization				max_features='sqrt'
+criterion			Controls how splits
+				 are made			Use gini for speed, entropy for purity	criterion='entropy'
+max_leaf_nodes		Limits total leaf nodes	Prevents complex trees				max_leaf_nodes=20		
+------------------------------------------------------------------------------------------------------
+
+Random Forest
+---------------
+ builds multiple Decision Trees and combines their results to make better predictions.
+
+Hyperparameter		Purpose						Effect
+-----------------------------------------------------------------------------------
+n_estimators		Number of trees					More trees = Better accuracy but slower training
+max_depth			Max depth of each tree				Prevents overfitting
+min_samples_split		Min samples needed to split a node		Prevents unnecessary splits
+min_samples_leaf		Min samples in a leaf node			Ensures stable predictions
+max_features		Number of features per split			Prevents overfitting & speeds up training
+bootstrap			Whether to sample data randomly		Improves randomness & generalization
+criterion			Splitting measure (gini, entropy, mse)	Controls how splits are made
+
+
