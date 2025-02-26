@@ -1,0 +1,57 @@
+Confusion matrix and Evaluation Metrics helps to compare which model performs 
+best on the given dataset.
+
+Confusion Matrix (used for classification)
+----------------------------------------------------------------------------
+1.Accuracy – Overall Correct Predictions
+2.Precision (Positive Predictive Value) – Correct Positives Among Predicted Positives
+-Important when False Positives must be minimized 
+
+3.Recall (Sensitivity, True Positive Rate) – Correct Positives Among Actual Positives
+-Important when False Negatives must be minimized
+
+4.F1 Score – Balance Between Precision & Recall
+5.Specificity (True Negative Rate) – Correct Negatives Among Actual Negatives
+
+ROC (Receiver Operating Characteristic) 
+	True Positive Rate (TPR) → How many actual positives were correctly classified?
+ 	False Positive Rate (FPR) → How many actual negatives were misclassified as positive?
+
+AUC (Area Under the Curve) 
+AUC = 1 → Perfect Model (100% accuracy).
+AUC = 0.5 → Random Guessing (Bad Model).
+AUC < 0.5 → Worse than random (rare case).
+
+If two models have the same accuracy, ROC-AUC helps choose the better one.
+
+
+---------------------------------------------------------------------------------
+Regression Metrics(also called Evaluation Metrics) (used for regression)
+--------------------------------------------------------------------------------------
+-Identifies Overfitting & Underfitting
+	-Check R² Score for overfitting
+	-Check MAE, MSE, RMSE for underfitting.
+
+Mean Absolute Error (MAE)
+-average absolute difference between actual and predicted values.
+-If you want a simple error measure
+-value needs to be close to 0 means more accuracy
+
+Mean Squared Error (MSE)
+-If you want to penalize large errors more
+-value needs to be close to zero
+
+Root Mean Squared Error (RMSE)
+-value needs to be close to zero
+
+R² Score 
+-If you want to see how much variance is explained
+-Variance measures how much a dataset’s values deviate from the mean (average)
+R² = 1 → Perfect model (100% variance explained).
+R² = 0 → Model performs as poorly as predicting the mean.
+R² < 0 → Model is worse than just predicting the mean.
+
+-value needs to be close to 1.
+
+Adjusted R² Score
+-If you have multiple features.

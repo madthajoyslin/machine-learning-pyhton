@@ -1,0 +1,159 @@
+Model Modeling--
+ 
+---Regression Algorithms (Predict Continuous Values)
+ 
+Linear Regression
+Polynomial Regression
+Ridge Regression
+Lasso Regression
+Elastic Net Regression
+Bayesian Regression
+Support Vector Regression (SVR)
+Decision Tree Regression
+Random Forest Regression
+ 
+---Classification Algorithms (Predict Categorical Labels)
+ 
+Logistic Regression
+Naïve Bayes (Gaussian, Multinomial, Bernoulli)
+K-Nearest Neighbors (KNN)
+Support Vector Machines (SVM)
+Decision Trees
+Random Forest Classifier
+ 
+ 
+---Clustering Algorithms
+ 
+K-Means Clustering
+Hierarchical Clustering (Agglomerative, Divisive)
+ 
+ 
+---Dimensionality Reduction Algorithms
+Principal Component Analysis (PCA)
+Linear Discriminant Analysis (LDA)
+-----------------------------------------------------------------------------------------
+ Linear Regression (straight line)
+-------------------------------------------------------------------------------------------
+Can be used when: 
+The relationship between input (X) and output (Y) is linear.
+The dataset does not have significant outliers.
+
+Y=mX+c :- c is intercept, m is coefficient, X is independent,Y is dependent
+
+Step 1: Import Libraries
+Step 2: Load the Dataset
+Step 3: Visualize the Data with sns.scatterplot
+Step 4: Split the Data (also we can use K-fold or cross validation)
+-training (80%) and testing (20%) from the given dataset.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+random_state=42 ===> for not to change the train test datas, everytime you execute.
+Step 5: Train the Model. with model.fit()
+Step 6: Make Predictions for test data. with model.predict()
+Step 7: Evaluate the Model (Evaluation Metrices)
+Step 8: Visualizing the Regression Line
+
+Hyperparameters :- Settings defined before training
+			 Can control how the model learns and regularizes
+Parameters :- Values learned during training
+
+Linear Regression Hyperparameters
+-----------------------------------
+-No major hyperparameters (it's a simple model)
+-fit_intercept=True/False
+-If fit_intercept=True, the model calculates b0. (default) 
+-It adjusts the intercept and fits the data properly.
+-It calculates even the smallest variations.
+
+-If fit_intercept=False, the model assumes b0=0. (forcing the line to pass through the origin).
+-This leads to incorrect predictions since our data does not naturally go through (0,0).
+-------------------------------------------------------------------------------------------------
+Decision Tree
+-----------------------
+A Decision Tree is a machine learning model that splits data into smaller groups
+based on decision rules.
+
+max_features of hyperparameters
+--------------------------------
+None (default) → Uses all features (best accuracy, may overfit).
+sqrt → Uses square root of total features (good for classification).
+log2 → Uses log base 2 of total features (helps generalization) Generalization means best fit.
+
+
+Hyperparameter		What It Does		When to Use?					Example
+----------------------------------------------------------------------------------------------------
+max_depth			Limits tree depth		Prevents overfitting				max_depth=5
+
+min_samples_split		Minimum samples to 
+				split a node		Avoids unnecessary splits			min_samples_split=10
+
+min_samples_leaf		Minimum samples in
+				 a leaf			Prevents small, meaningless splits		min_samples_leaf=4
+
+max_features		Limits number of  
+				features per split	Helps generalization				max_features='sqrt'
+
+criterion			Controls how splits	Entropy, Gini
+				 are made			Use gini for speed(No Log),
+								entropy=0 for purity				criterion='entropy'
+
+max_leaf_nodes		Limits total leaf		Prevents complex trees				max_leaf_nodes=20		
+				 nodes
+
+entropy means impurity
+------------------------------------------------------------------------------------------------------
+
+Random Forest
+---------------
+ builds multiple Decision Trees and combines their results to make better predictions.
+
+Hyperparameter		Purpose						Effect
+-----------------------------------------------------------------------------------
+n_estimators		Number of trees					More trees = Better accuracy but slower training
+max_depth			Max depth of each tree				Prevents overfitting
+min_samples_split		Min samples needed to split a node		Prevents unnecessary splits
+min_samples_leaf		Min samples in a leaf node			Ensures stable predictions
+max_features		Number of features per split			Prevents overfitting & speeds up training
+bootstrap			Whether to sample data randomly		Improves randomness & generalization
+				bootstrap=True(default)
+				-different subset of data
+				bootstrap=False
+				-It memorizes the data causes overfitting
+							
+criterion			Splitting measure (gini, entropy)		Controls how splits are made
+
+-------------------------------------------------------------------------------------------------------
+ Logistic Regression (sigmoid function)
+---------------------------------------------------------------------------------------------------------
+Used for binary classification (0 or 1, Yes or No, Spam or Not Spam)
+ 
+Types of Logistic Regression
+----------------------------
+Binary Logistic Regression (Two classes, e.g., Yes/No, Spam/Not Spam)
+Multinomial Logistic Regression (More than two classes, e.g., Cat/Dog/Rabbit)
+Ordinal Logistic Regression (Ordered categories, e.g., Low/Medium/High)
+
+Hyperparameter			Meaning							Effect
+C (default=1.0)			Inverse of regularization strength			Lower values → stronger regularization (reduces overfitting)
+penalty (default='l2')		Regularization type ('l1', 'l2', 			Prevents overfitting
+					'elasticnet', 'none')	
+solver (default='lbfgs')	Optimization algorithm ('lbfgs', 'liblinear', 	Controls how the model is trained
+					'saga', etc.)	
+max_iter (default=100)		Max training iterations					Increases if the model is not converging
+class_weight (default=None)	Handles imbalanced data ('balanced' or 		Adjusts weight for different classes
+					custom weights)	
+fit_intercept (default=True)	Includes bias term					True → includes intercept, False → no intercept
+tol (default=1e-4)		Stopping tolerance					Stops training if improvement is below this
+
+-------------------------------------------------------------------------------------------------------
+
+Overfitting :-  
+
+-If a model only memorizes the training, it will perform poorly on new data.
+-It perfectly classifies every training example but fails on test data.
+
+To prevent overfitting
+-L1 Regularization (Lasso) helps with feature selection by removing irrelevant features
+-L2 Regularization (Ridge) works well when all features are important.
+
+underfitting :-  Doesn’t learn enough patterns from the training data, 
+			leading to poor performance on both training and new data (Testing data)
